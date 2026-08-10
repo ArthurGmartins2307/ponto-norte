@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Logística Monitor"
+description = "Painel operacional para monitorar cotações de dólar e euro, condições climáticas nas rotas de entrega e alertas de risco em tempo real."
+version = "1.0.0"
+id = "artifacts/logistica-monitor"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24206
+
+[services.development]
+run = "pnpm --filter @workspace/logistica-monitor run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/logistica-monitor", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/logistica-monitor/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24206"
+BASE_PATH = "/"

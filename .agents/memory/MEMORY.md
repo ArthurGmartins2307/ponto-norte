@@ -1,0 +1,1 @@
+- [Logística Monitor](logistica-monitor.md) — preserve the mandatory Python collector exactly and never infer storm risk from temperature alone.
