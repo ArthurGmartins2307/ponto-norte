@@ -52,8 +52,8 @@ npm --version
 ## 1. Clone o projeto
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
-cd <PASTA_DO_PROJETO>
+git clone https://github.com/ArthurGmartins2307/ponto-norte.git
+cd ponto-norte
 ```
 
 ---
@@ -85,6 +85,12 @@ Running on http://127.0.0.1:5000
 ## 3. Configurar o Front-end
 
 Abra **outro terminal** na pasta do projeto.
+
+Entre na pasta:
+
+```bash
+cd ponto-norte
+```
 
 Instale o pnpm:
 
