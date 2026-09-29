@@ -60,7 +60,7 @@ cd ponto-norte
 
 ## 2. Configurar o Back-end
 
-Abra um terminal na pasta do projeto e instale as dependências:
+Abra um terminal na pasta do projeto e instale as dependências (Ctrl + Shift + '):
 
 ```bash
 pip install flask flask-cors requests pandas
@@ -84,7 +84,7 @@ Running on http://127.0.0.1:5000
 
 ## 3. Configurar o Front-end
 
-Abra **outro terminal** na pasta do projeto.
+Abra **outro terminal** na pasta do projeto (Ctrl + Shift + ').
 
 Entre na pasta:
 
