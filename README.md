@@ -324,9 +324,7 @@ http://localhost:5173/
 O Câmbio-Now TIP foi desenvolvido como um projeto prático para trabalhar com:
 
 * Consumo de APIs
-* Desenvolvimento de APIs com Flask
+* **Desenvolvimento de APIs com Flask**
 * Comunicação entre front-end e back-end
-* Manipulação de dados com Pandas
 * Armazenamento de dados em CSV
 * Desenvolvimento de interfaces web
-* Execução de projetos Python e Node.js
