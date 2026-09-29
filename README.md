@@ -1,78 +1,326 @@
-🚀 Guia Prático: Como Rodar o Câmbio-Now
-TIP
+# 🚀 Câmbio-Now TIP
 
-Boas-vindas! Este guia foi criado para que você (ou qualquer pessoa da sua equipe) consiga fazer o projeto funcionar do absoluto zero. Não é necessário ser um especialista em programação! Siga os passos abaixo na ordem e tudo dará certo. 🌟
+Aplicação web para consulta e visualização de **cotações de moedas, clima e histórico de dados**.
 
-🛠️ 1. O que você precisa ter instalado no computador?
-Antes de começarmos, seu computador precisa ter dois programas básicos instalados (pense neles como o motor do carro). Se você ainda não os tem, basta baixar e instalar (é como instalar qualquer outro aplicativo):
+O projeto utiliza **Python + Flask** no back-end e **Node.js + pnpm** no front-end.
 
-Python: É a linguagem do nosso servidor (o coração). 👉 Baixe em: python.org/downloads
-Node.js: É a ferramenta que roda o site (a interface visual). 👉 Baixe a versão "LTS" em: nodejs.org
-📦 2. Passo a Passo: Ligando o Motor (Back-end)
-O back-end é o cérebro que busca os valores do dólar, do euro e do clima na internet. Vamos ligá-lo primeiro!
+---
 
-Abra o Terminal (ou Prompt de Comando/PowerShell) do seu computador.
+## 🛠️ Tecnologias
 
-Navegue até a pasta onde estão os arquivos do projeto.
+### Back-end
 
-Primeiro, precisamos ensinar o Python a entender algumas ferramentas que o projeto usa. Digite o seguinte comando e aperte Enter:
+* Python
+* Flask
+* Flask-CORS
+* Requests
+* Pandas
 
-bash
+### Front-end
 
+* Node.js
+* pnpm
+* Vite
+
+### APIs utilizadas
+
+* AwesomeAPI — cotações de moedas
+* Open-Meteo — dados meteorológicos
+
+---
+
+# 📋 Requisitos
+
+Antes de executar o projeto, instale:
+
+* [Python](https://www.python.org/downloads/)
+* [Node.js](https://nodejs.org/) — versão **LTS**
+* npm — instalado junto com o Node.js
+
+Verifique se estão instalados:
+
+```bash
+python --version
+node --version
+npm --version
+```
+
+---
+
+# ▶️ Como executar
+
+## 1. Clone o projeto
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd <PASTA_DO_PROJETO>
+```
+
+---
+
+## 2. Configurar o Back-end
+
+Abra um terminal na pasta do projeto e instale as dependências:
+
+```bash
 pip install flask flask-cors requests pandas
-NOTE
+```
 
-Isso vai baixar pacotes da internet. Espere a barrinha de carregamento terminar.
+Depois, execute o servidor:
 
-Agora, basta ligar o servidor! Digite:
-
-bash
-
+```bash
 python server.py
-Sucesso! 🎉 Se você vir uma mensagem dizendo * Running on http://127.0.0.1:5000, significa que o cérebro do projeto está funcionando! Não feche essa janela do terminal, apenas minimize-a.
+```
 
-🎨 3. Passo a Passo: Ligando a Vitrine (Front-end)
-Agora vamos ligar a parte visual do projeto, os gráficos e botões.
+Se tudo estiver funcionando, aparecerá algo semelhante a:
 
-Abra uma NOVA aba ou janela do Terminal e vá até a pasta do projeto novamente.
+```text
+Running on http://127.0.0.1:5000
+```
 
-Vamos instalar um gerenciador de pacotes ultra-rápido chamado pnpm. Digite:
+**Mantenha esse terminal aberto.**
 
-bash
+---
 
+## 3. Configurar o Front-end
+
+Abra **outro terminal** na pasta do projeto.
+
+Instale o pnpm:
+
+```bash
 npm install -g pnpm@9.15.0
-Agora, vamos pedir para o pnpm baixar todas as peças (botões, temas, ícones) que o nosso site precisa. Digite:
+```
 
-bash
+Depois instale as dependências do projeto:
 
+```bash
 pnpm install
-NOTE
+```
 
-Esse processo pode demorar alguns minutinhos. Vá tomar um café rápido! ☕
+Por fim, inicie o front-end:
 
-Por fim, vamos colocar o site no ar! Digite:
-
-bash
-
+```bash
 pnpm run dev
-Pronto! 🎈 O terminal vai te mostrar um link verde (geralmente http://localhost:5173/). É só segurar o botão Ctrl do seu teclado e clicar no link (ou copiar e colar no seu navegador) para ver o projeto ganhando vida!
+```
 
-🧠 Entendendo o Coração do Projeto (server.py)
-Se você tem curiosidade de entender como a mágica acontece nos bastidores, o arquivo server.py é o grande maestro. Ele é escrito em Python e tem algumas missões fundamentais.
+O terminal mostrará um endereço semelhante a:
 
-Vamos dissecar o que ele faz em uma linguagem simples:
+```text
+http://localhost:5173/
+```
 
-1. Preparando o Terreno
-Logo nas primeiras linhas, ele importa "ajudantes". O requests serve para acessar sites e roubar dados (do bem!), o pandas serve para organizar planilhas e o Flask é quem cria o servidor e atende o telefone quando o front-end liga pedindo dados.
+Abra esse endereço no navegador.
 
-2. A Função Principal: buscar_dados_logistica()
-Esta é a engrenagem principal. Quando ela é acionada, ela executa 3 tarefas perfeitamente orquestradas:
+---
 
-Missão 1 (Moedas): Bate na porta da AwesomeAPI e pergunta: "Quanto está o Dólar e o Euro agora?". Ele lê a resposta e anota.
-Missão 2 (Clima): Bate na porta da Open-Meteo passando as coordenadas de São Paulo e pergunta: "Qual a temperatura atual?". Ele anota também.
-Missão 3 (Histórico): Ele pega essas anotações, adiciona a data e a hora exatas (timestamp) e salva tudo num arquivo de planilha de texto chamado historico_web.csv. Isso garante que nenhuma informação se perca!
-3. Entregando o Pacote (/api/dados)
-Toda vez que o painel bonitão do front-end quiser atualizar os gráficos, ele grita para o arquivo Python: "Me dá as novidades!" (fazendo um GET na rota /api/dados). O server.py chama a função que vimos acima e cospe tudo no formato JSON, que é um formato que o front-end consegue ler e desenhar na tela.
+# 📁 Estrutura básica
 
-4. Checagem de Saúde (/api/healthz)
-Adicionamos uma mini-rota que o front-end chama só para perguntar "Você está vivo?". E o nosso server.py simplesmente responde: {"status": "ok"}. Isso impede que o painel fique exibindo mensagens chatas de erro!
+```text
+cambio-now/
+│
+├── server.py
+├── historico_web.csv
+├── package.json
+├── pnpm-lock.yaml
+│
+├── src/
+│   └── ...
+│
+└── ...
+```
+
+---
+
+# 🔌 API do Back-end
+
+O Flask disponibiliza algumas rotas para o front-end.
+
+## `GET /api/dados`
+
+Retorna os dados atuais utilizados pelo painel.
+
+Exemplo:
+
+```text
+http://127.0.0.1:5000/api/dados
+```
+
+Essa rota:
+
+1. Consulta as cotações de moedas.
+2. Consulta a temperatura atual.
+3. Registra os dados.
+4. Salva o histórico no arquivo `historico_web.csv`.
+5. Retorna os dados em formato **JSON**.
+
+---
+
+## `GET /api/healthz`
+
+Verifica se o servidor está funcionando.
+
+```text
+http://127.0.0.1:5000/api/healthz
+```
+
+Resposta esperada:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+# 🧠 Como funciona o `server.py`
+
+O arquivo `server.py` é responsável pelo **back-end da aplicação**.
+
+### `requests`
+
+Utilizado para realizar requisições às APIs externas.
+
+### `pandas`
+
+Utilizado para organizar e manipular os dados, incluindo o histórico armazenado em CSV.
+
+### `Flask`
+
+Cria o servidor e disponibiliza as rotas utilizadas pelo front-end.
+
+### `Flask-CORS`
+
+Permite a comunicação entre o front-end e o servidor Flask em origens diferentes.
+
+---
+
+# 🔄 Fluxo dos dados
+
+O funcionamento básico da aplicação é:
+
+```text
+             ┌───────────────┐
+             │   Front-end   │
+             └───────┬───────┘
+                     │
+                     │ GET /api/dados
+                     ▼
+             ┌───────────────┐
+             │    Flask      │
+             │  server.py    │
+             └───────┬───────┘
+                     │
+          ┌──────────┴──────────┐
+          ▼                     ▼
+   ┌─────────────┐       ┌─────────────┐
+   │ AwesomeAPI  │       │ Open-Meteo  │
+   │   Moedas    │       │   Clima     │
+   └─────────────┘       └─────────────┘
+          │                     │
+          └──────────┬──────────┘
+                     ▼
+             ┌───────────────┐
+             │     Pandas    │
+             │    Histórico  │
+             └───────┬───────┘
+                     ▼
+             historico_web.csv
+```
+
+---
+
+# 📊 Histórico
+
+Os dados consultados são registrados no arquivo:
+
+```text
+historico_web.csv
+```
+
+O histórico permite armazenar as consultas realizadas junto com o respectivo **timestamp**, possibilitando análises posteriores.
+
+---
+
+# ⚠️ Problemas comuns
+
+### `python` não é reconhecido
+
+Verifique se o Python está instalado:
+
+```bash
+python --version
+```
+
+Caso necessário, reinstale o Python e habilite a opção **Add Python to PATH** durante a instalação.
+
+---
+
+### `pip` não é reconhecido
+
+Tente:
+
+```bash
+python -m pip install flask flask-cors requests pandas
+```
+
+---
+
+### `pnpm` não é reconhecido
+
+Instale novamente:
+
+```bash
+npm install -g pnpm@9.15.0
+```
+
+E verifique:
+
+```bash
+pnpm --version
+```
+
+---
+
+### A porta 5000 já está sendo utilizada
+
+Outro processo pode estar utilizando a porta do Flask. Encerre o processo que está utilizando a porta ou altere a porta configurada no `server.py`.
+
+---
+
+# 🚀 Resumo rápido
+
+Depois que todas as dependências estiverem instaladas, são necessários **dois terminais**:
+
+### Terminal 1 — Back-end
+
+```bash
+python server.py
+```
+
+### Terminal 2 — Front-end
+
+```bash
+pnpm run dev
+```
+
+Depois, acesse:
+
+```text
+http://localhost:5173/
+```
+
+---
+
+## 👨‍💻 Objetivo do projeto
+
+O Câmbio-Now TIP foi desenvolvido como um projeto prático para trabalhar com:
+
+* Consumo de APIs
+* Desenvolvimento de APIs com Flask
+* Comunicação entre front-end e back-end
+* Manipulação de dados com Pandas
+* Armazenamento de dados em CSV
+* Desenvolvimento de interfaces web
+* Execução de projetos Python e Node.js
